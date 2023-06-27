@@ -1,0 +1,28 @@
+class Solution
+{
+    public:
+    bool isPalindrome(int x) 
+    {
+        long long   int n=x, l = 0, k;
+        while(n != 0)
+        {
+           k = n % 10;
+            l = l * 10+k;
+           n /= 10;
+         }
+
+  
+                 if(x>=0)
+                 {
+                     if(l==x)
+                     {
+                       return true;
+                      }
+
+                         else return false;
+                  }
+
+                        else return false;
+     }
+    
+};

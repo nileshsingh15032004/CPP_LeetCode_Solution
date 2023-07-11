@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int myAtoi(string s) {
+        long long num = 0;
+        int i = 0, f = 1;
+
+        // Skip leading whitespace
+        while (s[i] == ' ')
+            i++;
+
+        // Check for optional sign
+        if (s[i] == '-' || s[i] == '+') {
+            f = (s[i] == '-') ? -1 : 1;
+            i++;
+        }
+
+        // Process digits
+        while (s[i] >= '0' && s[i] <= '9') {
+            num = num * 10 + (s[i] - '0');
+
+            // Check for overflow
+            if (num * f >= INT_MAX)
+                return INT_MAX;
+            if (num * f <= INT_MIN)
+                return INT_MIN;
+
+            i++;
+        }
+
+        return num * f;
+    }
+};

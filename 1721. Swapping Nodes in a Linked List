@@ -1,0 +1,50 @@
+class Solution {
+public:
+    ListNode* swapNodes(ListNode* head, int k) {
+        ListNode* temp = head, *adrs=nullptr;
+        int temp2;
+        int temp3;
+        int i = 0;
+        int l = 1;
+
+        while (temp) 
+        {
+               i++;
+                 if (l == k)
+                 {
+                    adrs=temp;
+                 temp2 = temp->val;
+                 }
+                 temp = temp->next;
+                 l++;
+        }
+
+        temp = head;
+        l = 1;
+
+        while (temp) {
+            if (l == i - k + 1) {
+                // temp3 = temp->val;
+                // temp->val = temp2;
+                adrs->val=temp->val;
+                temp->val=temp2;
+            }
+            l++;
+            temp = temp->next;
+        }
+
+        // temp = head;
+        // l = 1;
+
+        // while (temp) {
+        //     if (l == k) {
+        //         temp->val = temp3;
+        //         break;
+        //     }
+        //     l++;
+        //     temp = temp->next;
+        // }
+
+        return head;
+    }
+};

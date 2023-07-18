@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool isEven(int x)
+    {
+        int c=0;
+        while(x)
+        { 
+            c++;
+            x=x/10;
+        }
+        if(c%2 == 0)
+            return 1;
+        return 0;
+    }
+    
+    int findNumbers(vector<int>& nums) {
+        int c=0;
+        
+        for(int i=0; i<nums.size(); i++)
+        {
+            if(isEven(nums[i]))
+                c++;
+        }
+        return c;
+        
+    }
+};

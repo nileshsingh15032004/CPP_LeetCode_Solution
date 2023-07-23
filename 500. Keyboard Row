@@ -1,0 +1,77 @@
+class Solution {
+public:
+    vector<string> findWords(vector<string>& words) {
+        string s1="qwertyuiopQWERTYUIOP", s2="AasSdDfFgGhHjJKkLl", s3="zxcvbnmZXCVBNM";
+        bool sameRow=true, anyChar=false;
+         vector<string> ans;
+
+        for(auto word: words)
+        { int count=0;
+       
+                                 //S1
+                                    for(auto ch: word)
+                                    {
+                                             for(auto ch2: s1)
+                                                   if(ch==ch2)
+                                                   {
+                                                      count++;
+                                                      break; 
+                                                   }
+                                     
+                                    } 
+                                   if(count==word.size()) 
+                                    ans.push_back(word);
+                                 
+
+                                  count = 0;
+                               //  for(auto word: words)
+                               //  {  //int count=0;
+                                 
+                                             //S2
+                                                for(auto ch: word)
+                                                {
+                                                         for(auto ch2: s2)
+                                                               if(ch==ch2)
+                                                               {
+                                                                  count++;
+                                                                  break; 
+                                                               }
+                                                   // if(count==word.size()) 
+                                                   
+                                                   
+                                                         
+                                                } 
+                                              if(count==word.size()) 
+                                               ans.push_back(word);
+                                                
+                                    
+                                // }
+
+                                 
+                           
+                                    count=0;
+
+                                // for(auto word: words)
+                                // {  //int count=0;
+                                 
+                                          //S2
+                                             for(auto ch: word)
+                                             
+                                                      for(auto ch2: s3)
+                                                            if(ch==ch2)
+                                                            {
+                                                               count++;
+                                                               break; 
+                                                            }
+                                                
+                                       if(count==word.size()) 
+                                      ans.push_back(word);
+                                    
+                                    
+                               //  }
+        }
+        
+  return ans;
+
+    } 
+};

@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int numSquares(int n) {
+        vector<int> memo(n + 1, -1);
+        return helper(n, memo);
+    }
+
+    int helper(int tar, vector<int>& memo) {
+        if (tar == 0) return 0;
+
+        if (memo[tar] != -1) return memo[tar];
+
+        int res = 1e9;
+        for (int i = 1; i * i <= tar; ++i) {
+            res = min(res, 1 + helper(tar - i * i, memo));
+        }
+
+        return memo[tar] = res;
+    }
+};

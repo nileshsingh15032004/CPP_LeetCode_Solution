@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int strangePrinter(string s) {
+        // remove consecutive duplicates
+        string t = "";
+        for (char c : s) {
+            if (t.empty() || t.back() != c) {
+                t += c;
+            }
+        }
+        // use dynamic programming to find the minimum strokes
+        int n = t.size();
+        vector<vector<int>> dp(n, vector<int>(n));
+        for (int i = n - 1; i >= 0; i--) {
+            dp[i][i] = 1; // one stroke for one character
+            for (int j = i + 1; j < n; j++) {
+                dp[i][j] = dp[i + 1][j] + 1; // add one stroke for the first character
+                for (int k = i + 1; k <= j; k++) {
+                    if (t[i] == t[k]) { // if the first character is the same as the k-th character
+                        dp[i][j] = min(dp[i][j], dp[i + 1][k - 1] + dp[k][j]); // try to merge the strokes
+                    }
+                }
+            }
+        }
+        return dp[0][n - 1];
+    }
+};
